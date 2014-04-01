@@ -1,16 +1,14 @@
-import sqlite3
 import random
 
-class Animal(object):
+
+class Animal:
     """docstring for Animal"""
     def __init__(self, species, age, name, gender, weight):
-        self.species=species
-        self.age=age
-        self.name=name
-        self.gender=gender
-        self.weight=weight
-
-
+        self.species = species
+        self.age = age
+        self.name = name
+        self.gender = gender
+        self.weight = weight
 
     def eat(self, food_weight ):
         return self.weight*food_weight
@@ -31,5 +29,4 @@ class Animal(object):
     def food(self, food_type):
         '''return the type of food which the animal eat'''
         pass
-
 
