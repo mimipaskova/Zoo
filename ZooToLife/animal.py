@@ -28,4 +28,8 @@ class Animal(object):
             return False
         return True
 
+    def food(self, food_type):
+        '''return the type of food which the animal eat'''
+        pass
+
 
