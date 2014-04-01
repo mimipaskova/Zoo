@@ -16,12 +16,18 @@ class Zoo(Animal):
         self.grass_price = 2
 
     def get_animal_count(self):
+        '''
+        Returns the count of animals in the zoo
+        '''
         result = 0
         for i in self.animals:
             result += len(i)
         return result
 
     def add_animal(self, animal):
+        '''
+        Add a new animal in the zoo
+        '''
         if self.animals.__contains__(animal.get_species):
             animals = self.animals[animal.get_species]
             self.animals[animal.get_species] = animals.append(animal)
