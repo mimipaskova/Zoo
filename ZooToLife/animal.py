@@ -10,6 +10,14 @@ class Animal:
         self.gender = gender
         self.weight = weight
 
+    @property
+    def age(self):
+        return "Ne moje"
+
+    @age.setter
+    def age(self, age):
+        self.age = age
+
     def eat(self, food_weight ):
         return self.weight*food_weight
 

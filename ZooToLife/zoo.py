@@ -17,17 +17,23 @@ class Zoo(Animal):
 
     def get_animal_count(self):
         result = 0
-        for i in self.animals:
-            result += len(i)
+        for spec in self.animals:
+            result += len(self.animals[spec])
         return result
 
     def add_animal(self, animal):
-        if self.animals.__contains__(animal.get_species):
+        '''
+        Adds an animal to the zoo
+        -If no such speacies in the zoo - adds it
+        -Else add the animal to the list of animals of
+          the species
+        '''
+        if self.animals.__contains__(animal.species):
             animals = self.animals[animal.get_species]
             self.animals[animal.get_species] = animals.append(animal)
             #  CHECK self.animalimals[animal.get_species] = dict.setdefault()
         else:
-            self.animal[animal.get_species] = [animal]
+            self.animals[animal.species] = [animal]
 
     def remove_animal(self, animal):
         '''
@@ -41,7 +47,7 @@ class Zoo(Animal):
         '''
         Returns the dayly income for the Zoo
         '''
-        return 60 * self.get_animal_count()
+        return self.animal_income * self.get_animal_count()
 
     def feed_animals(self):
         '''
