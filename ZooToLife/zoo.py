@@ -16,6 +16,9 @@ class Zoo(Animal):
         self.grass_price = 2
 
     def get_animal_count(self):
+        '''
+        Returns the count of animals in the zoo
+        '''
         result = 0
         for spec in self.animals:
             result += len(self.animals[spec])
@@ -28,7 +31,7 @@ class Zoo(Animal):
         -Else add the animal to the list of animals of
           the species
         '''
-        if self.animals.__contains__(animal.species):
+        if self.animals.__contains__(animal.get_species):
             animals = self.animals[animal.get_species]
             self.animals[animal.get_species] = animals.append(animal)
             #  CHECK self.animalimals[animal.get_species] = dict.setdefault()

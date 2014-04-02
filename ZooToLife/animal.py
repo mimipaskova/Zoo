@@ -19,14 +19,23 @@ class Animal:
         self.age = age
 
     def eat(self, food_weight ):
+        '''
+        The animal eats
+        '''
         return self.weight*food_weight
 
     def grow(self, average_weight, weight_age):
+        '''
+        The animal grows every day
+        '''
         if(self.weight<average_weight):
             self.weight +=weight_age/30
         return self.weight
 
     def is_alive(self, life_expectancy):
+        '''
+        This method check if the animal is alive or die
+        '''
         chance_of_dying = self.age / life_expectancy
 
         numb= random.randint(0,100)
