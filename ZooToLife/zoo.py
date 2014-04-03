@@ -83,7 +83,9 @@ class Zoo(Animal):
         Returns the if the animal can have a baby
         '''
         if animal.gender == "female":
-            pass
+            if animal.must_give_birth():
+                pass #  ADD NEW ANIMAL
+                     #  ADD to day pass
         else:
             return False
 
