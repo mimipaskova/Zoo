@@ -58,7 +58,7 @@ class Zoo(Animal):
         '''
         result = 0
         for species in self.animals:
-            all_eated = sum([anim.eat for anim in self.animals[species]])
+            all_eated = sum([anim.eat() for anim in self.animals[species]])
             if get_food_type(species) == "meat":
                 result += self.meat_price * all_eated
             else:
