@@ -59,9 +59,9 @@ class Zoo(Animal):
         # anim keeps the species of the animal
         for anim in self.animals:
             if get_food_type(anim) == "meat":
-                result += self.meat_price * len( self.animals[anim] )
+                result += self.meat_price * len(self.animals[anim])
             else:
-                result += self.grass_price * len( self.animals[anim] )
+                result += self.grass_price * len(self.animals[anim])
         return result
 
     def outcome(self):
@@ -89,15 +89,14 @@ class Zoo(Animal):
         '''
         pass
 
-    def __is_month_passed(self):
+    def check_month_passed(self):
         '''
-        Returns if a month has passed
+        Adds a month has to animals if passed
         '''
+        self.month += 1
         if self.month == 30:
             self.month = 0
             self.__add_month_to_age()
-        else:
-            return False
 
     def __add_month_to_age(self):
         '''
@@ -109,5 +108,9 @@ class Zoo(Animal):
                 anim.age += 1
 
     def a_day_pass(self):
+        '''
+        Runs a day in the zoo
+        '''
+        self.is_month_passed()
         self.budjet = self.income() - self.outcome()
         self.new_babies()
