@@ -5,18 +5,10 @@ class Animal:
     """docstring for Animal"""
     def __init__(self, species, age, name, gender, weight):
         self.species = species
-        self.age = age # In months
+        self.age = age  # In months
         self.name = name
-        self.gender = gender # Male / Female
+        self.gender = gender  # Male / Female
         self.weight = weight
-
-    @property
-    def age(self):
-        return "Ne moje"
-
-    @age.setter
-    def age(self, age):
-        self.age = age
 
     def eat(self, food_weight):
         '''
@@ -42,8 +34,3 @@ class Animal:
         if numb <= (chance_of_dying*100):
             return False
         return True
-
-    def food(self, food_type):
-        '''return the type of food which the animal eat'''
-        pass
-
