@@ -1,5 +1,5 @@
 from animal import Animal
-#from zoo_database import get_food_type
+#from zoo_database import get_food_type, get_gestation
 
 
 def get_food_type(anim):
@@ -14,11 +14,9 @@ class Zoo(Animal):
         self.animal_income = 60
         self.meat_price = 4
         self.grass_price = 2
+        self.month = 0
 
     def get_animal_count(self):
-        '''
-        Returns the count of animals in the zoo
-        '''
         result = 0
         for spec in self.animals:
             result += len(self.animals[spec])
@@ -31,7 +29,7 @@ class Zoo(Animal):
         -Else add the animal to the list of animals of
           the species
         '''
-        if self.animals.__contains__(animal.get_species):
+        if self.animals.__contains__(animal.species):
             animals = self.animals[animal.get_species]
             self.animals[animal.get_species] = animals.append(animal)
             #  CHECK self.animalimals[animal.get_species] = dict.setdefault()
@@ -70,10 +68,16 @@ class Zoo(Animal):
         '''
         Returns the dayly outcome for the Zoo
         '''
-        pass
+        return self.feed_animals()
 
-    def __check_genders(self):
-        pass
+    def __check_genders(self, animal):
+        '''
+        Returns the if the animal can have a baby
+        '''
+        if animal.gender == "female":
+            pass
+        else:
+            return False
 
     def __born_new_baby(self):
         pass
@@ -84,3 +88,26 @@ class Zoo(Animal):
         Uses __check_gender and __born_new_baby
         '''
         pass
+
+    def __is_month_passed(self):
+        '''
+        Returns if a month has passed
+        '''
+        if self.month == 30:
+            self.month = 0
+            self.__add_month_to_age()
+        else:
+            return False
+
+    def __add_month_to_age(self):
+        '''
+        Adds a month to all animals
+        Keeps the age of the animal in months
+        '''
+        for species in self.animals:
+            for anim in self.animals[species]:
+                anim.age += 1
+
+    def a_day_pass(self):
+        self.budjet = self.income() - self.outcome()
+        self.new_babies()
