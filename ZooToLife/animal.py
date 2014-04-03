@@ -9,6 +9,9 @@ class Animal:
         self.name = name
         self.gender = gender  # Male / Female
         self.weight = weight
+        self.pregnant = -1  # if positive - the animal is pregnant
+                            # if zero the animal must give birth
+                            # if negative and more tham -6, it can get pregnant
 
     def eat(self, food_weight):
         '''
@@ -20,6 +23,8 @@ class Animal:
         '''
         The animal grows every month
         '''
+        if self.gender == "female":
+            self.pregnant -= 1
         if(self.weight < average_weight):
             self.weight += weight_age/30
         return self.weight
@@ -34,3 +39,6 @@ class Animal:
         if numb <= (chance_of_dying*100):
             return False
         return True
+
+    def must_give_birth(self):
+        return self.pregnant == 0
