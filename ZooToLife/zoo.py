@@ -53,13 +53,14 @@ class Zoo(Animal):
 
     def __feed_animals(self):
         '''
-        Returns a the sum needed to
+        Returns the sum needed to
         feed all the animals
         '''
         result = 0
         for species in self.animals:
+            all_eated = sum([anim.eat for anim in self.animals[species]])
             if get_food_type(species) == "meat":
-                result += self.meat_price * len(self.animals[species])
+                result += self.meat_price * all_eated
             else:
                 result += self.grass_price * len(self.animals[species])
         return result
