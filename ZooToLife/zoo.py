@@ -1,5 +1,6 @@
 from animal import Animal
-#from zoo_database import get_food_type, get_gestation
+#from zoo_database import get_food_type, get_gestation, get_average_weight, get_weight_age
+# make it *
 
 
 def get_food_type(anim):
@@ -50,18 +51,17 @@ class Zoo(Animal):
         '''
         return self.animal_income * self.get_animal_count()
 
-    def feed_animals(self):
+    def __feed_animals(self):
         '''
         Returns a the sum needed to
         feed all the animals
         '''
         result = 0
-        # anim keeps the species of the animal
-        for anim in self.animals:
-            if get_food_type(anim) == "meat":
-                result += self.meat_price * len(self.animals[anim])
+        for species in self.animals:
+            if get_food_type(species) == "meat":
+                result += self.meat_price * len(self.animals[species])
             else:
-                result += self.grass_price * len(self.animals[anim])
+                result += self.grass_price * len(self.animals[species])
         return result
 
     def outcome(self):
@@ -98,19 +98,26 @@ class Zoo(Animal):
             self.month = 0
             self.__add_month_to_age()
 
-    def __add_month_to_age(self):
+    def __add_month_to_age_if_not_dead(self):
         '''
-        Adds a month to all animals
-        Keeps the age of the animal in months
+        Adds a month to all animals if animal is alive
+        else removes the animal from the zoo
+        Prints a messege if an animal has died
         '''
         for species in self.animals:
             for anim in self.animals[species]:
-                anim.age += 1
+                if anim.is_alive():
+                    anim.age += 1
+                    #anim.grow(get_average_weight(), get_weight_age())
+                else:
+                    print("{} the {} has died\n".format(anim.name,
+                                                        anim.species))
+                    self.remove_animal(anim)
 
     def a_day_pass(self):
         '''
         Runs a day in the zoo
         '''
-        self.is_month_passed()
+        self.check_month_passed()
         self.budjet = self.income() - self.outcome()
         self.new_babies()

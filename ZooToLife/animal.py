@@ -5,9 +5,9 @@ class Animal:
     """docstring for Animal"""
     def __init__(self, species, age, name, gender, weight):
         self.species = species
-        self.age = age
+        self.age = age # In months
         self.name = name
-        self.gender = gender
+        self.gender = gender # Male / Female
         self.weight = weight
 
     @property
@@ -18,7 +18,7 @@ class Animal:
     def age(self, age):
         self.age = age
 
-    def eat(self, food_weight ):
+    def eat(self, food_weight):
         '''
         The animal eats
         '''
@@ -26,10 +26,10 @@ class Animal:
 
     def grow(self, average_weight, weight_age):
         '''
-        The animal grows every day
+        The animal grows every month
         '''
-        if(self.weight<average_weight):
-            self.weight +=weight_age/30
+        if(self.weight < average_weight):
+            self.weight += weight_age/30
         return self.weight
 
     def is_alive(self, life_expectancy):
@@ -38,8 +38,8 @@ class Animal:
         '''
         chance_of_dying = self.age / life_expectancy
 
-        numb= random.randint(0,100)
-        if numb<(chance_of_dying*100):
+        numb = random.randint(0, 100)
+        if numb <= (chance_of_dying*100):
             return False
         return True
 
