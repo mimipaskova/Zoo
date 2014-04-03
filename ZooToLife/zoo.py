@@ -33,12 +33,16 @@ class Zoo(Animal):
         -Else add the animal to the list of animals of
           the species
         '''
-        if self.animals.__contains__(animal.species):
-            animals = self.animals[animal.get_species]
-            self.animals[animal.get_species] = animals.append(animal)
-            #  CHECK self.animalimals[animal.get_species] = dict.setdefault()
+        if self.capasity > self.get_animal_count()+1:
+            if self.animals.__contains__(animal.species):
+                animals = self.animals[animal.get_species]
+                self.animals[animal.get_species] = animals.append(animal)
+                #  CHECK self.animalimals[animal.get_species] = dict.setdefault()
+            else:
+                self.animals[animal.species] = [animal]
+            return "Animal added"
         else:
-            self.animals[animal.species] = [animal]
+            return "Zoo is full"
 
     def remove_animal(self, animal):
         '''

@@ -39,7 +39,7 @@ class testZoo(unittest.TestCase):
 
     def test_check_month_passed_dead_animal(self):
         self.testZoo.add_animal(self.testAnim)
-        self.testAnim.age = 10000 # some infinite age
+        self.testAnim.age = 10000  # some infinite age
         self.testZoo.check_month_passed()
         self.assertEqual({}, self.testZoo.animals)
 
