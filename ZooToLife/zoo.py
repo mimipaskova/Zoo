@@ -3,6 +3,9 @@ from animal import Animal
 # make it *
 
 
+def get_life_expectancy(amim):
+    pass
+
 def get_food_type(anim):
     pass
 
@@ -107,9 +110,9 @@ class Zoo(Animal):
         '''
         for species in self.animals:
             for anim in self.animals[species]:
-                if anim.is_alive():
+                if anim.is_alive(get_life_expectancy(species)):
                     anim.age += 1
-                    #anim.grow(get_average_weight(), get_weight_age())
+                    #anim.grow(get_average_weight(species), get_weight_age(species))
                 else:
                     print("{} the {} has died\n".format(anim.name,
                                                         anim.species))
