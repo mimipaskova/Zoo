@@ -32,6 +32,17 @@ class testZoo(unittest.TestCase):
 
         self.assertEqual(180, self.testZoo.income())
 
+    def test_check_month_passed_days_reset(self):
+        self.testZoo.month = 30
+        self.check_month_passed()
+        self.assertEqual(0, self.testZoo.month)
+
+    def test_check_month_passed_dead_animal(self):
+        self.testZoo.add_animal(self.testAnim)
+        self.testAnim.age = 10000 # some infinite age
+        self.testZoo.check_month_passed()
+        self.assertEqual({}, self.testZoo.animals)
+
     # def outcome
 
 
