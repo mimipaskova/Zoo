@@ -4,7 +4,7 @@ from animal import Animal
 
 
 def get_life_expectancy(amim):
-    pass
+    return 1
 
 def get_food_type(anim):
     pass
@@ -18,7 +18,7 @@ class Zoo(Animal):
         self.animal_income = 60
         self.meat_price = 4
         self.grass_price = 2
-        self.month = 0
+        self.days_of_month = 0
 
     def get_animal_count(self):
         result = 0
@@ -101,10 +101,10 @@ class Zoo(Animal):
         '''
         Adds a month has to animals if passed
         '''
-        self.month += 1
-        if self.month == 30:
-            self.month = 0
-            self.__add_month_to_age()
+        self.__add_month_to_age_if_not_dead()
+        self.days_of_month += 1
+        if self.days_of_month >= 30:
+            self.days_of_month = 0
 
     def __add_month_to_age_if_not_dead(self):
         '''

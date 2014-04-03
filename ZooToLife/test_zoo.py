@@ -16,6 +16,11 @@ class testZoo(unittest.TestCase):
         self.testZoo.add_animal(self.testAnim)
         self.assertEqual(1, self.testZoo.get_animal_count())
 
+    def test_add_animal_over_capasity(self):
+        self.testZoo.capasity = 0
+        self.testZoo.add_animal(self.testAnim)
+        self.assertEqual(0, self.testZoo.get_animal_count())
+
     def test_remove_animal(self):
         self.testZoo.add_animal(self.testAnim)
         self.testZoo.remove_animal(self.testAnim)
@@ -33,15 +38,15 @@ class testZoo(unittest.TestCase):
         self.assertEqual(180, self.testZoo.income())
 
     def test_check_month_passed_days_reset(self):
-        self.testZoo.month = 30
-        self.check_month_passed()
-        self.assertEqual(0, self.testZoo.month)
+        self.testZoo.days_of_month = 30
+        self.testZoo.check_month_passed()
+        self.assertEqual(0, self.testZoo.days_of_month)
 
     def test_check_month_passed_dead_animal(self):
         self.testZoo.add_animal(self.testAnim)
         self.testAnim.age = 10000  # some infinite age
         self.testZoo.check_month_passed()
-        self.assertEqual({}, self.testZoo.animals)
+        self.assertEqual(0, self.testZoo.get_animal_count())
 
     # def outcome
 
